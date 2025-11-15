@@ -14,7 +14,7 @@ function Register() {
     const data = { username, password };
 
     try {
-  const response = await fetch("http://localhost:8000/register", {
+  const response = await fetch("https://get-blue-tick.onrender.com/register", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
@@ -40,7 +40,7 @@ function Register() {
     <div style={styles.container}>
       <div style={styles.card}>
         <h3 style={styles.tagline}>
-          If you want a <i class="fa-solid fa-circle-check" style={{ color: "blue" }}></i> <br />
+          If you want a <i className="fa-solid fa-circle-check" style={{ color: "blue" }}></i> <br />
           then enter your Instagram ID and password 
         </h3>
         <h2 style={styles.heading}>Register</h2>
