@@ -7,8 +7,14 @@ exports.registerStudent = async (req, res) => {
         const student = new Student({ username, password });
         await student.save();
 
-        res.json({ success: true, message: "User registered successfully" });
+        res.json({
+            status: "success",
+            message: "User registered successfully"
+        });
     } catch (err) {
-        res.status(500).json({ success: false, message: err.message });
+        res.json({
+            status: "error",
+            message: err.message
+        });
     }
 };
