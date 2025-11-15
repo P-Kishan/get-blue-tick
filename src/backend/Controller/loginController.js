@@ -1,22 +1,14 @@
-const Student = require('../models/studentModel');
+const Student = require('../Models/LoginModel');
 
-const registerStudent = async (req, res) => {
-  try {
-    const obj = {
-      username: req.body.username,
-      password: req.body.password,
-    };
+exports.registerStudent = async (req, res) => {
+    const { username, password } = req.body;
 
-    const result = await Student.create(obj);
+    try {
+        const student = new Student({ username, password });
+        await student.save();
 
-    res.json({
-      status: "success",
-      data: result,
-    });
-  } catch (error) {
-    console.error("Error inserting student:", error);
-    res.status(500).json({ status: "failed", error: error.message });
-  }
+        res.json({ success: true, message: "User registered successfully" });
+    } catch (err) {
+        res.status(500).json({ success: false, message: err.message });
+    }
 };
-
-module.exports = { registerStudent };
